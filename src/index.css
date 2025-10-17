@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2563eb;
+  --color-accent: #14b8a6;
+}
+
+body {
+  background-color: #f9fafb; /* Tailwind gray.50 */
+  color: #1f2937; /* Tailwind gray.800 */
+}
+input:focus + label,
+textarea:focus + label,
+select:focus + label {
+  color: #2563eb; /* blue-600 */
+}
+
+label {
+  pointer-events: none;
+}
+/* ---------- Floating Input Styles (Updated) ---------- */
+.floating-input {
+  position: relative;
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+/* Input, Select, Textarea */
+.floating-input .input-field {
+  width: 100%;
+  padding: 1rem 0.75rem 0.5rem;
+  font-size: 1rem;
+  color: #111827; /* text-gray-900 */
+  background-color: transparent;
+  border: 1.5px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.floating-input .input-field:focus {
+  border-color: #2563eb; /* blue-600 */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Label */
+.floating-input label {
+  position: absolute;
+  left: 0.75rem;
+  top: 1rem;
+  color: #6b7280; /* gray-500 */
+  font-size: 1rem;
+  pointer-events: none;
+  background-color: white;
+  padding: 0 0.25rem;
+  transition: all 0.2s ease;
+}
+
+/* Float label when input focused or has value */
+.floating-input .input-field:focus + label,
+.floating-input .input-field:not(:placeholder-shown) + label,
+.floating-input select.input-field:focus + label,
+.floating-input select.input-field[value]:not([value=""]) + label,
+.floating-input input[type="date"].input-field:focus + label,
+.floating-input input[type="date"].input-field:not([value=""]) + label,
+.floating-input textarea.input-field:focus + label,
+.floating-input textarea.input-field:not(:placeholder-shown) + label,
+.floating-input label.active {
+  top: -0.6rem;
+  left: 0.6rem;
+  font-size: 0.75rem;
+  color: #2563eb; /* blue-600 */
+  background: white;
+}
+
+/* Select dropdown */
+.floating-input select.input-field {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg fill='%236b7280' height='16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M4 6l4 4 4-4z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+/* Date picker tweaks */
+.floating-input input[type="date"].input-field {
+  color-scheme: light;
+}
+.floating-input input[type="date"].input-field::-webkit-calendar-picker-indicator {
+  opacity: 0.7;
+  cursor: pointer;
+  padding-right: 0.25rem;
+}
+.floating-input input[type="date"].input-field:not(:focus):invalid + label {
+  top: 1rem;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* Textarea */
+.floating-input textarea.input-field {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Disabled state */
+.floating-input .input-field:disabled {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+}
